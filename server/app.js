@@ -1,22 +1,25 @@
-const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const express = require("express");
 const app = express();
 
-const DB =
-  "mongodb+srv://sailestha2018:sailestha2018@shresthacluster.wqvd6fx.mongodb.net/?retryWrites=true&w=majority&appName=shresthaCluster";
+dotenv.config({ path: "./config.env" });
+require("./db/conn");
+// const User = require("./model/userSchema");
 
-mongoose.connect(DB).then(() => {
-  console.log("connetcion succefull");
-});
+app.use(express.json());
+
+app.use(require("./router/auth"));
+
+const PORT = process.env.PORT;
 
 const middleware = (req, res, next) => {
-  console.log("my middleware");
+  console.log("hello my middleware");
   next();
 };
 
-app.get("/", (req, res) => {
-  res.send(`hello world from server`);
-});
+// app.get("/", (req, res) => {
+//   res.send(`hello world from server app.js`);
+// });
 
 app.get("/about", middleware, (req, res) => {
   res.send(`hello world from about`);
@@ -32,7 +35,7 @@ app.get("/signup", (req, res) => {
   res.send(`hello registration world from signup`);
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log(`server is running at port 3000`);
 });
 
