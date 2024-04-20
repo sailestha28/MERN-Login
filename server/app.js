@@ -2,13 +2,12 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
-// const DB =
-//   "mongodb+srv://sailestha2018:sailestha@2580@cluster.omblret.mongodb.net/?retryWrites=true&w=majority&appName=Cluster";
+const DB =
+  "mongodb+srv://sailestha2018:sailestha2018@shresthacluster.wqvd6fx.mongodb.net/?retryWrites=true&w=majority&appName=shresthaCluster";
 
-// const db =
-//   "mongodb+srv://sailestha2018:sailestha@2580@cluster.omblret.mongodb.net/?retryWrites=true&w=majority&appName=Cluster";
-
-// mongoose.connect(db);
+mongoose.connect(DB).then(() => {
+  console.log("connetcion succefull");
+});
 
 const middleware = (req, res, next) => {
   console.log("my middleware");
