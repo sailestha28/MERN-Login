@@ -25,21 +25,21 @@ const middleware = (req, res, next) => {
   next();
 };
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json(`hello world from server app.js`);
 });
 
-app.get("/about", middleware, (req, res) => {
+app.get("/api/about", middleware, (req, res) => {
   res.send(`hello world from about`);
 });
 
-app.get("/contact", (req, res) => {
+app.get("/api/contact", (req, res) => {
   res.send(`hello world from contact`);
 });
-app.get("/signin", (req, res) => {
+app.get("/api/signin", (req, res) => {
   res.send(`hello world from sign`);
 });
-app.get("/signup", (req, res) => {
+app.get("/api/signup", (req, res) => {
   res.send(`hello registration world from signup`);
 });
 
